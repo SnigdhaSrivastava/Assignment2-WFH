@@ -10,9 +10,8 @@ import * as d3 from 'd3';
 export class AppComponent {
   title = 'assig2';
   serverData : JSON;
-  x=0;
-  y=0;
-  l=0;
+  count=0;
+  
  
   
 
@@ -23,12 +22,11 @@ export class AppComponent {
   ngOnInit() {
     this.httpClient.get('http://127.0.0.1:8080/').subscribe(data => {
       this.serverData = data as JSON;
-      this.x = this.serverData[0][0];
-      this.y = this.serverData[0][1];
+      
+      this.count = Object.keys(this.serverData).length;        //counting the number of nodes (total number of array(x,y coordinates))
+      console.log(this.count);
       
 
-      
-      //console.log(this.l);
       console.log("Success");
       console.log(this.serverData);
       console.log(this.serverData[0]);
@@ -43,8 +41,8 @@ export class AppComponent {
   svgnodes() {
 
     var svgContainer = d3.select("body").append("svg")
-                                     .attr("width", 200)
-                                     .attr("height", 200);
+                                     .attr("width", 500)
+                                     .attr("height", 500);
  
  //Draw the Rectangle
       var rectangle = svgContainer.append("rect")
@@ -56,4 +54,7 @@ export class AppComponent {
                               
 
   }
+
+
+
 }
