@@ -37,7 +37,16 @@ def db_connection():
     cur.execute(sql)
     con.commit()
     xy = cur.fetchall()
-    print(xy)
+    print(xy)          #x,y coordinates
+
+    xyjson = json.dumps(xy)
+    item_dict = json.loads(xyjson)   #x,y coordinates in json form
+
+    length = len(item_dict)          # number of nodes
+    print(length)
+
+    arr = [xyjson , length]
+
     return json.dumps(xy)
     
 
