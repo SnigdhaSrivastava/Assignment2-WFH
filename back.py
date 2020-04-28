@@ -3,19 +3,25 @@ from collections import OrderedDict
 import json
 import psycopg2
 from truckpad.bottle.cors import CorsPlugin, enable_cors
+import bottle
 
-def allow_cors(func):
-    """ this is a decorator which enable CORS for specified endpoint """
+def cors(func):
     def wrapper(*args, **kwargs):
-        response.set_header('Access-Control-Allow-Origin', '*')
-        response.add_header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS') # * in case you want to be accessed via any website
-        return func(*args, **kwargs)
+        bottle.response.set_header("Access-Control-Allow-Origin", "*")
+        bottle.response.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        bottle.response.set_header("Access-Control-Allow-Headers", "Origin, Content-Type")
+        
+        # skip the function if it is not needed
+        if bottle.request.method == 'OPTIONS':
+            return
 
+        return func(*args, **kwargs)
     return wrapper
 
-@enable_cors
-@allow_cors
-@route('/')
+
+
+@route('/',method='get')
+@cors
 def db_connection():
     con = psycopg2.connect(
 	host = "localhost",
