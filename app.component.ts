@@ -12,9 +12,6 @@ export class AppComponent {
   serverData : JSON;
   count=0;
   
- 
-  
-
   constructor(private httpClient: HttpClient) {
 
   }
@@ -39,22 +36,28 @@ export class AppComponent {
   }
 
   svgnodes() {
-
+    
+    
     var svgContainer = d3.select("body").append("svg")
-                                     .attr("width", 500)
-                                     .attr("height", 500);
- 
- //Draw the Rectangle
-      var rectangle = svgContainer.append("rect")
-                              .attr("x", this.serverData[0][0])
-                              .attr("y", this.serverData[0][1])
-                              .attr("width", 50)
-                              .attr("height", 50)
-                              .style("fill","green");
-                              
+                                     .attr("width", 1000)
+                                     .attr("height", 600)
+                                     .style("border", "1px solid black");
 
+
+    for (let i = 0; i < this.count; i++){
+       console.log(i);
+       let j=0;
+      
+            console.log(i,j);
+
+            var rectangle = svgContainer.append("rect")
+            .attr("x", this.serverData[i][j])
+            .attr("y", this.serverData[i][j+1])
+            .attr("width", 50)
+            .attr("height", 50)
+            .style("fill","green");
+
+                                      
+     }
   }
-
-
-
 }
