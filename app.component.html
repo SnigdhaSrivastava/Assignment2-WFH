@@ -1,3 +1,22 @@
 
-<h1>Hello</h1>
+
+<body>
+  <h1>Count {{ count }}</h1>
+  <h1>Server Data {{ serverData }}</h1>
+
+
+  <svg width="1000" height="600" style ="border:1px solid black" >
+    <a xlink:href="#" class="rectbtn" >
+      <rect *ngFor="let sdata of serverData" [attr.x] = " sdata[0] "  [attr.y] = "sdata[1]" width="50" height="50" style="fill:green" data-toggle="modal">
+        <title>{{sdata[2]}}</title>
+      </rect>
+    </a>
+  </svg>
+  
+<ul>
+  <li *ngFor = "let sdata of serverData" >{{sdata[2]}}</li>
+</ul>
+
+  
+</body>
 <router-outlet></router-outlet>
