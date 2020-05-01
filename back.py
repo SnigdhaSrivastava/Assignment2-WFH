@@ -4,6 +4,19 @@ import json
 import psycopg2
 from truckpad.bottle.cors import CorsPlugin, enable_cors
 import bottle
+import logging
+
+#generating logs (file name in which logs are generated - sample)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('sample.log')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
 
 def cors(func):
     def wrapper(*args, **kwargs):
@@ -32,12 +45,12 @@ def db_connection():
 
     cur=con.cursor()
 
-    sql = 'SELECT x,y FROM node;'
-    print(sql)
+    sql = 'SELECT x,y,name FROM node;'
+    logger.info(sql)
     cur.execute(sql)
     con.commit()
     xy = cur.fetchall()
-    print(xy)          #x,y coordinates
+    logger.info(xy)          #x,y coordinates
 
     return json.dumps(xy)
     
