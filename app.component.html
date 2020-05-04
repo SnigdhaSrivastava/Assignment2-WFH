@@ -1,22 +1,40 @@
 
 
 <body>
-  <h1>Count {{ count }}</h1>
-  <h1>Server Data {{ serverData }}</h1>
+  
 
-
+<!-- creating multiple nodes with svg -->
   <svg width="1000" height="600" style ="border:1px solid black" >
-    <a xlink:href="#" class="rectbtn" >
-      <rect *ngFor="let sdata of serverData" [attr.x] = " sdata[0] "  [attr.y] = "sdata[1]" width="50" height="50" style="fill:green" data-toggle="modal">
+    
+      <rect *ngFor="let sdata of serverData" [attr.x] = " sdata[0] "  [attr.y] = "sdata[1]" width="50" height="50" style="fill:green" (click)="showModal=true" data-toggle="modal" data-target="#myModal">
         <title>{{sdata[2]}}</title>
       </rect>
-    </a>
+    
   </svg>
-  
-<ul>
-  <li *ngFor = "let sdata of serverData" >{{sdata[2]}}</li>
-</ul>
 
-  
+  <!-- The Modal -->
+<div class="modal" id="myModal" [ngClass]="{'show':showModal}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"> Modal Heading </h4>
+        <button type="button" class="close" (click)="showModal=false" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="showModal=false" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>  
 </body>
 <router-outlet></router-outlet>
