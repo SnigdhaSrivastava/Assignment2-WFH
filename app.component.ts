@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as d3 from 'd3';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,17 @@ export class AppComponent {
   title = 'assig2';
   serverData : JSON;
   count=0;
-  showModal:boolean=false;
+ // showModal:boolean=false;
+
   
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private modalService: NgbModal) {}
 
   
 
-  
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+    console.log("modal opened");
+  }
 
   ngOnInit() {
     this.httpClient.get('http://127.0.0.1:8080/').subscribe(data => {
@@ -35,12 +40,13 @@ export class AppComponent {
       console.log(this.serverData[0][1]);
       console.log(this.serverData[0][2]);
 
-      //this.svgnodes();
-    
-
-      
+      //this.svgnodes();   
     })
   }
+
+
+
+
 
 
   //function to create nodes using svg and d3
