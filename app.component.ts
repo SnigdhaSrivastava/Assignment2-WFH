@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as d3 from 'd3';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbDatepickerKeyboardService } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +14,22 @@ export class AppComponent {
   title = 'assig2';
   serverData : JSON;
   count=0;
- // showModal:boolean=false;
-
+  ImageName = "../assets/images/node_image.jpeg";
+  
+  //jsPanel : any;
   
   constructor(private httpClient: HttpClient,private modalService: NgbModal) {}
 
-  
+  openXl(con) {
+    // this.modalService.open(content, { size: 'xl' });
+    console.log(con);
 
-  openLg(content) {
-    this.modalService.open(content, { size: 'lg' });
+    jsPanel.create({
+      id: function(){return con;},
+      callback: function () {
+        this.setHeaderTitle(this.id)},
+      content: '<p style="text-align:center;">A simple demo panel.</p>'
+  });
     console.log("modal opened");
   }
 
