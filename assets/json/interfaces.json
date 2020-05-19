@@ -1,0 +1,203 @@
+[
+    {
+        "1" : {
+            "name" : "node_1",
+            "image" : "../assets/images/node_1.png",
+            "ports" : [
+                {
+                    "ifindex" : "1",
+                    "name" : "interface_1",
+                    "description" : "first interface",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 20,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+
+                {
+                    "ifindex" : "2",
+                    "name" : "interface_2",
+                    "description" : "second interface",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+                {
+                    "ifindex" : "3",
+                    "name" : "interface_3",
+                    "description" : "third interface",
+                    "status": "testing",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+                {
+                    "ifindex" : "4",
+                    "name" : "interface_4",
+                    "description" : "fourth interface",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+                {
+                    "ifindex" : "5",
+                    "name" : "interface_5",
+                    "description" : "fifth interface",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "2" : {
+            "name" : "node_2",
+            "image" : "../assets/images/node_2.jpg",
+            "ports" : [
+                {
+                    "ifindex" : "1",
+                    "name" : "interface_1",
+                    "description" : "first interface of node 2",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 20,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+
+                {
+                    "ifindex" : "2",
+                    "name" : "interface_2",
+                    "description" : "Second interface of node 2",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "3" : {
+            "name" : "node_3",
+            "image" : "../assets/images/node_3.jpg",
+            "ports" : [
+                {
+                    "ifindex" : "1",
+                    "name" : "interface_1",
+                    "description" : "first interface of node 3",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 20,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+
+                {
+                    "ifindex" : "2",
+                    "name" : "interface_2",
+                    "description" : "Second interface of node 3",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "4" : {
+            "name" : "node_4",
+            "image" : "../assets/images/node_4.jpg",
+            "ports" : [
+                {
+                    "ifindex" : "1",
+                    "name" : "interface_1",
+                    "description" : "first interface of node 4",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 20,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+
+                {
+                    "ifindex" : "2",
+                    "name" : "interface_2",
+                    "description" : "Second interface of node 4",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "5" : {
+            "name" : "node_5",
+            "image" : "../assets/images/node_5.jpg",
+            "ports" : [
+                {
+                    "ifindex" : "1",
+                    "name" : "interface_1",
+                    "description" : "first interface of node 5",
+                    "status": "online",
+                    "coords" : {
+                        "x" : 20,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                },
+
+                {
+                    "ifindex" : "2",
+                    "name" : "interface_2",
+                    "description" : "Second interface of node 5",
+                    "status": "offline",
+                    "coords" : {
+                        "x" : 60,
+                        "y" : 20,
+                        "w" : 20,
+                        "h" : 20
+                    }
+                }
+            ]
+        }
+    }
+]
