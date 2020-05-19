@@ -1,0 +1,68 @@
+
+<div class = "container">
+
+  <h1>Nodes-Network</h1>
+  
+  <svg width = "850" height = "500" style = "border:1px solid black" >
+      
+    <rect *ngFor="let node of nodes" [attr.x] = "node[4]"  [attr.y] = "node[5]" width = "50" height = "50" style= "fill:rgb(0, 45, 128)" (click) = "onCLick(node[1])">
+      <title>{{ node[1] }}</title>
+    </rect>
+  </svg>
+  
+  <app-ngx-modal *ngFor ="let nodeitem of nodedetails; index as ind" [myInput] = 'nodeitem[ind+1].name' [nodesInfo] = 'nodeitem[ind+1]' [name]= 'nodeitem[ind+1].name'></app-ngx-modal>
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="container">
+  
+
+
+  <svg id="svgid" width="1000" height="600" style ="border:1px solid black" >
+    
+      <rect *ngFor="let sdata of serverData" [attr.x] = " sdata[0] "  [attr.y] = "sdata[1]" width="20" height="20" style="fill:#B3E5FC ; stroke-width:1 ; ;stroke:rgb(0,0,0)" (click) = "openXl(sdata[2])">
+        <title>{{sdata[2]}}</title>
+      </rect>
+
+    
+  </svg>
+
+  
+
+  
+
+  <ng-template #content1 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Node </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <img src="../assets/images/node_image.PNG" id="imagepreview">
+    
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>  
+</div>
+ 
+  
+
+
+
+<router-outlet></router-outlet> -->
