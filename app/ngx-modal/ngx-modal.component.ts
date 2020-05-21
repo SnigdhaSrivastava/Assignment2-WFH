@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { InterfaceService } from 'src/interfaces.service';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-ngx-modal',
@@ -13,6 +14,7 @@ export class NgxModalComponent implements OnInit {
   @Input() nodesInfo: JSON;
   @Input() name: string;
   nodesinterfaces: Object;
+  public selectedName : any;
 
   constructor(private modalService: NgxSmartModalService,
               private interfaceService: InterfaceService) {
@@ -26,5 +28,17 @@ export class NgxModalComponent implements OnInit {
 
   closeModal() {
     this.modalService.closeLatestModal();
+  }
+
+  public highlightRow(item){
+
+    this.selectedName = item;
+    
+    console.log(item);
+    console.log(item.x);
+    console.log(item.y);
+    
+   
+
   }
 }
