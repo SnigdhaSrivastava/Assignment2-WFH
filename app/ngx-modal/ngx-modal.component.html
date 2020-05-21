@@ -3,7 +3,7 @@
     <br>
     <!-- <img id="imagenode" class='image' [src]= "nodesInfo['image']" alt="..."> -->
 
-    <svg width = "450" height = "100" style = "border:1px solid black" >
+    <svg id="modalsvg" width = "450" height = "100" style = "border:1px solid black" >
      
       
       <rect *ngFor="let node of nodesInfo['ports']" [attr.x] = "node.coords.x"  [attr.y] = "node.coords.y" width = "20" height = "20" style= "fill:rgb(0, 45, 128)">
@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of nodesInfo['ports']; index as i" (mouseover)="highlightRow(item.coords)" [ngClass] = "{'highlight' : item.coords == selectedName}">
+        <tr *ngFor="let item of nodesInfo['ports'];" (mouseover)="highlightRow(item)" (mouseout)="removeHighlight(item.coords)" [ngClass] = "{'highlight' : item.coords == selectedName}">
           <td>{{ item.ifindex }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>

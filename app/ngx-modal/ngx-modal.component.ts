@@ -32,13 +32,88 @@ export class NgxModalComponent implements OnInit {
 
   public highlightRow(item){
 
-    this.selectedName = item;
+    this.selectedName = item.coords;
     
     console.log(item);
-    console.log(item.x);
-    console.log(item.y);
+    console.log(item.coords.x);
+    console.log(item.coords.y);
+
+    this.svgnodes(item);
     
    
 
   }
+
+  svgnodes(item){
+    var svgContainer = d3.select("#modalsvg")
+
+    console.log(item.status);
+    if(item.status == "online"){
+
+      console.log("onlinetrue")
+
+      var rectangle = svgContainer.append("rect")
+      .attr("x", item.coords.x)
+      .attr("y", item.coords.y)
+      .attr("width", item.coords.w)
+      .attr("height", item.coords.h)
+      .style("fill","green")
+
+    }
+    if(item.status == "offline"){
+
+      console.log("offlinefalse")
+
+      var rectangle = svgContainer.append("rect")
+      .attr("x", item.coords.x)
+      .attr("y", item.coords.y)
+      .attr("width", item.coords.w)
+      .attr("height", item.coords.h)
+      .style("fill","red")
+    }
+    if(item.status == "testing")
+    {
+
+      console.log("testing")
+
+      var rectangle = svgContainer.append("rect")
+      .attr("x", item.coords.x)
+      .attr("y", item.coords.y)
+      .attr("width", item.coords.w)
+      .attr("height", item.coords.h)
+      .style("fill","orange")
+
+
+    }
+    
+                                      
+
+    // var rectangle = svgContainer.append("rect")
+    //                             .attr("x", item.coords.x)
+    //                             .attr("y", item.coords.y)
+    //                             .attr("width", item.coords.w)
+    //                             .attr("height", item.coords.h)
+    //                             .style("fill","green")
+
+  }
+
+reverseEffect(item){
+  var svgContainer = d3.select("#modalsvg")
+                                      
+
+  var rectangle = svgContainer.append("rect")
+                              .attr("x", item.x)
+                              .attr("y", item.y)
+                              .attr("width", item.w)
+                              .attr("height", item.h)
+                              .style("fill","rgb(0, 45, 128)")
+
+}
+
+  public removeHighlight(item){
+    this.reverseEffect(item);
+
+  }
+  
+
 }

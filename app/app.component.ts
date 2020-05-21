@@ -40,15 +40,18 @@ export class AppComponent {
       (data: JSON) => {
         this.nodes = data;
         console.log(this.nodes);
+        console.log(this.nodes[2][2]);
       } 
     )
   }
   
   onCLick(item: string) {
     console.log(item);
+    
     this.ngxSmartModalService.getModal(item).open();
     this.ngxSmartModalService.setModalData(this.nodes, item);
   }
+  
 }
 
 
