@@ -3,7 +3,7 @@
 
   <h1>Nodes-Network</h1>
   
-  <svg width = "850" height = "500" style = "border:1px solid black" >
+  <svg id="mainsvg" width = "850" height = "500" style = "border:1px solid black" >
       
     <rect *ngFor="let node of nodes" [attr.x] = "node[4]"  [attr.y] = "node[5]" width = "50" height = "50" style= "fill:rgb(0, 45, 128)" (click) = "onCLick(node[1])">
       <title>{{ node[1] }}</title>
@@ -19,7 +19,7 @@
 
 
 
-  
+
 
 
 <!-- 

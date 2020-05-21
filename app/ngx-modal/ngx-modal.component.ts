@@ -30,6 +30,7 @@ export class NgxModalComponent implements OnInit {
     this.modalService.closeLatestModal();
   }
 
+  
   public highlightRow(item){
 
     this.selectedName = item.coords;
@@ -39,8 +40,11 @@ export class NgxModalComponent implements OnInit {
     console.log(item.coords.y);
 
     this.svgnodes(item);
-    
-   
+
+  }
+
+  public removeHighlightRow(){
+    this.selectedName = false;
 
   }
 
@@ -88,19 +92,13 @@ export class NgxModalComponent implements OnInit {
     
                                       
 
-    // var rectangle = svgContainer.append("rect")
-    //                             .attr("x", item.coords.x)
-    //                             .attr("y", item.coords.y)
-    //                             .attr("width", item.coords.w)
-    //                             .attr("height", item.coords.h)
-    //                             .style("fill","green")
+    
 
   }
 
 reverseEffect(item){
-  var svgContainer = d3.select("#modalsvg")
-                                      
 
+  var svgContainer = d3.select("#modalsvg")
   var rectangle = svgContainer.append("rect")
                               .attr("x", item.x)
                               .attr("y", item.y)
@@ -112,7 +110,7 @@ reverseEffect(item){
 
   public removeHighlight(item){
     this.reverseEffect(item);
-
+    this.removeHighlightRow();
   }
   
 
