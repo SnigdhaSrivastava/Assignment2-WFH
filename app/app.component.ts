@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, ElementRef, ViewChildren, QueryList,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as d3 from 'd3';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { InterfaceService } from 'src/interfaces.service';
+import { BackendService } from 'src/app/backend.service';
 
 
 @Component({
@@ -10,49 +11,86 @@ import { InterfaceService } from 'src/interfaces.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   modalName: string = "popuptwo";
-  nodesDetails: Object = [
-    {
-      name: "nodes_1",
-      status: "online",
-      ip: "1.1.1.1"
-    },
-    {
-      name: "nodes_2",
-      status: "offline",
-      ip: "1.1.1.2"
-      }
-  ]
+  
   @ViewChildren('items') items: QueryList<ElementRef>; 
   title = 'network-nodes';
   nodes: JSON;
   nodedetails: JSON;
+
+  data=[];
+
+  //noContext:any;
+
+ // dataFromService = '';
+  
   constructor (
     public ngxSmartModalService: NgxSmartModalService,
     private httpClient: HttpClient, 
-    private nodeinterfaces: InterfaceService) {
+    private nodeinterfaces: InterfaceService,
+    private backendService: BackendService) {
       nodeinterfaces.getInterfacesData().subscribe( data => this.nodedetails = data as JSON);
     }
 
   ngOnInit(){
-    this.httpClient.get('http://127.0.0.1:8080/').subscribe(
-      (data: JSON) => {
-        this.nodes = data;
-        console.log(this.nodes);
-        console.log(this.nodes[2][2]);
-      } 
-    )
+    this.backendService.get().subscribe((ret: any[])=>{    //backend service to fetch data from python to angular.
+      console.log(ret);
+      this.data = ret;
+    })  
   }
   
-  onCLick(item: string) {
-    console.log(item);
+  onCLick(item: string) {          //ngxSmartModal is used for making popup dialogue box which opens on ,
+    console.log(item);             //clicking the node and contains the information about the node interfaces.
     
     this.ngxSmartModalService.getModal(item).open();
     this.ngxSmartModalService.setModalData(this.nodes, item);
   }
-  
+
 }
+
+  //  WhichButton(event) {
+  //   //console.log("whichbuttonevent");
+  //   //console.log(event.which);
+  //   switch(event.which){
+      
+  //     case 3:console.log("case 3 of switch");
+      
+  //            this.contextMenufunc();   //use contextmenu
+  //            break;
+  //   }    
+  // }
+
+  // contextMenufunc(){
+
+  //   const noContext = document.getElementById('nocontextmenu');
+
+  //    noContext.addEventListener('contextmenu', event => {
+  //      event.preventDefault();
+  //      event.stopPropagation();
+  //      console.log("Prevent");
+  //    });
+    
+  //    //this.dataFromService="data";
+
+  //   console.log(noContext);
+    
+  //   console.log("right click")
+
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

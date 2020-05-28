@@ -8,6 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
 import { NgxModalComponent } from './ngx-modal/ngx-modal.component';
 import { InterfaceService } from 'src/interfaces.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { InterfaceService } from 'src/interfaces.service';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    MatTooltipModule,
+    BrowserAnimationsModule,
     NgxSmartModalModule.forRoot()
   ],
   providers: [NgxSmartModalService, InterfaceService],

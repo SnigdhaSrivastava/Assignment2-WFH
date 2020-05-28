@@ -1,17 +1,25 @@
 <ngx-smart-modal [(identifier)]='myInput'>
     <h1>{{name}}</h1>
     <br>
-    <!-- <img id="imagenode" class='image' [src]= "nodesInfo['image']" alt="..."> -->
-
-    <svg id="modalsvg" width = "450" height = "100" style = "border:1px solid black" >
-     
-      
-      <rect *ngFor="let node of nodesInfo['ports']" [attr.x] = "node.coords.x"  [attr.y] = "node.coords.y" width = "20" height = "20" style= "fill:rgb(0, 45, 128)">
+    
+    <!-- Adding the svg element which contains the nodes(interfaces) in the pop up dialogue box(made using modals) -->
+    <svg id="modalsvg" width = "450" height = "100" style = "border:1px solid black" > 
+      <rect *ngFor="let node of nodesInfo['ports'];index as i" [attr.x] = "node.coords.x"  [attr.y] = "node.coords.y" width = "20" height = "20" [id]="i"
+      [ngClass] = " { 
+        'red': node.status == 'offline',
+        'green': node.status == 'online',
+        'orange': node.status == 'testing' 
+      }"
+    (mouseenter) = "highlightRow($event)"   
+    (mouseleave) = "unHighlightRow($event)">  
       </rect>
     </svg>
+    <!-- call functions on mouse-enter and mouse-leave-->
 
     <br><br>
-    <table class="table table-stripped">
+
+    <!-- A table is made with values coming from the json file -->
+    <table class="table table-stripped table-hover">
         <thead>
         <tr>
           <th scope="col">IfIndex</th>
@@ -21,7 +29,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of nodesInfo['ports'];" (mouseover)="highlightRow(item)" (mouseout)="removeHighlight(item.coords)" [ngClass] = "{'highlight' : item.coords == selectedName}">
+          <tr *ngFor="let item of nodesInfo['ports']; index as i" [id]="'id' + i"     (mouseenter) = 'highlightInterface(i)' (mouseleave) = 'unHighlightInterface()' >
           <td>{{ item.ifindex }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>

@@ -2,14 +2,17 @@
 <div class = "container">
 
   <h1>Nodes-Network</h1>
+
+  <!-- making nodes by fetching coordinates from backend table -->
   
   <svg id="mainsvg" width = "850" height = "500" style = "border:1px solid black" >
       
-    <rect *ngFor="let node of nodes" [attr.x] = "node[4]"  [attr.y] = "node[5]" width = "50" height = "50" style= "fill:rgb(0, 45, 128)" (click) = "onCLick(node[1])">
-      <title>{{ node[1] }}</title>
+    <rect *ngFor="let node of data" [attr.x] = "node[4]"  [attr.y] = "node[5]" width = "50" height = "50" style= "fill:rgb(0, 45, 128)" (click) = "onCLick(node[1])">
+      
     </rect>
   </svg>
-  
+
+  <!-- including the ngxmodal component for modals  -->
   <app-ngx-modal *ngFor ="let nodeitem of nodedetails; index as ind" [myInput] = 'nodeitem[ind+1].name' [nodesInfo] = 'nodeitem[ind+1]' [name]= 'nodeitem[ind+1].name'></app-ngx-modal>
   
   </div>
